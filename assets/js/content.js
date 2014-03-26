@@ -9,6 +9,7 @@ var getHostnameMd5 = function(href) {
 
 var hostMd5 = getHostnameMd5(document.URL.toLowerCase());
 var isValidSite = hostMd5 == 'e2d248678b12356a39e437792090fe25' || hostMd5 == '0005c1ca8320c9550456458f77244eff';
+var hasEnabledScrolling = false;
 
 if (isValidSite) {
 	console.log('host matched. continuing to run prxdevsitemods');
@@ -108,6 +109,20 @@ if (isValidSite) {
 					}
 				}
 			}
+		} // displayGoToIssue
+		
+		// Re-enable scroll in separate windows for IssueEdit
+		if (window.innerHeight != 830 && /IssueEdit.aspx/i.test(document.URL)) {
+			$('body,html,form').css('height', 'auto').css('overflow', 'auto');
+			hasEnabledScrolling = true;
+		}
+		else if (/IssueEdit.aspx/i.test(document.URL)) {
+			$(window).resize(function() {
+				if (!hasEnabledScrolling) {
+					$('body,html,form').css('height', 'auto').css('overflow', 'auto');
+					hasEnabledScrolling = true;
+				}
+			});
 		}
 	});
 }
