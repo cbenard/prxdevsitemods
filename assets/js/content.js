@@ -113,13 +113,13 @@ if (isValidSite) {
 		
 		// Re-enable scroll in separate windows for IssueEdit
 		if (window.innerHeight != 830 && /IssueEdit.aspx/i.test(document.URL)) {
-			$('body,html,form').css('height', 'auto').css('overflow', 'auto');
+			$('html,body,form,.GreyFrameWhiteAdminBG').css('height', 'auto').css('overflow-y', 'visible').css('overflow-x', 'visible');
 			hasEnabledScrolling = true;
 		}
 		else if (/IssueEdit.aspx/i.test(document.URL)) {
 			$(window).resize(function() {
 				if (!hasEnabledScrolling) {
-					$('body,html,form').css('height', 'auto').css('overflow', 'auto');
+					$('html,body,form,.GreyFrameWhiteAdminBG').css('height', 'auto').css('overflow-y', 'visible').css('overflow-x', 'visible');
 					hasEnabledScrolling = true;
 				}
 			});
