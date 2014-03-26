@@ -100,6 +100,15 @@ if (isValidSite) {
 								
 								window.open('IssueEdit.aspx?IssueNumber=' + this.value);
 							}
+							else if (evt.which > 31 && (evt.which < 48 || evt.which > 57)) {
+								evt.preventDefault();
+							}
+						});
+						
+						$('#issueNumberDirect').keyup(function(evt) {
+							if (/\D/.test($(this).val())) {
+								$(this).val($(this).val().replace(/\D/g, ''));
+							}
 						});
 						
 						$('#issueNumberDirect').focus(function() {
