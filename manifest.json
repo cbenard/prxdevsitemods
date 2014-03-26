@@ -1,0 +1,68 @@
+{
+    "name": "PRx Dev Site Modifications",
+    "description": "Enhances the PRx Dev Site with additional functionality.",
+    "version": "0.1",
+    "permissions":
+    [
+        "storage",
+        "notifications",
+        "alarms",
+        "tabs",
+        "<all_urls>"
+    ],
+    "web_accessible_resources":
+    [
+        "assets/img/icon-48.png"
+    ],
+    "page_action" :
+    {
+        "default_icon" : "assets/img/icon-48.png",
+        "default_title" : "Configure PRx Dev Site Modifications",
+        "default_popup" : "popup.html"
+    },
+    "options_page": "popup.html",
+    "background":
+    {
+        "scripts" :
+        [
+            "assets/js/jquery-1.10.1.min.js",
+			"assets/js/md5.js",
+            "assets/js/bgevents.js"
+        ],
+        "persistent" : false
+    },
+    "content_scripts" :
+    [
+        {
+            "matches" :
+            [
+                "*://*/SupportCenter/*.aspx*",
+                "*://*/LocationSearch.aspx*",
+                "*://*/Updater/*.aspx*"
+            ],
+            "js" :
+            [
+                "assets/js/jquery-1.10.1.min.js",
+                "assets/js/jquery.cookie.js",
+                "assets/js/formattime.js",
+                "assets/js/stringextensions.js",
+                "assets/js/md5.js",
+                "assets/js/content.js"
+            ],
+            "run_at" : "document_end",
+            "all_frames" : false
+        }
+    ],
+    "icons" :
+    {
+        "19" : "assets/img/icon-19.png",
+        "38" : "assets/img/icon-38.png",
+        "48" : "assets/img/icon-48.png",
+        "128" : "assets/img/icon-128.png"
+    },
+	"web_accessible_resources" :
+    [
+		"assets/js/content-scope-functions.js"
+	],
+    "manifest_version": 2
+}
