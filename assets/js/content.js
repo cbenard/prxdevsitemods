@@ -7,7 +7,7 @@ var getHostnameMd5 = function(href) {
     return md5(l.hostname);
 };
 
-var hostMd5 = getHostnameMd5(document.URL);
+var hostMd5 = getHostnameMd5(document.URL.toLowerCase());
 var isValidSite = hostMd5 == 'e2d248678b12356a39e437792090fe25' || hostMd5 == '0005c1ca8320c9550456458f77244eff';
 
 if (isValidSite) {
@@ -99,6 +99,11 @@ if (isValidSite) {
 								
 								window.open('IssueEdit.aspx?IssueNumber=' + this.value);
 							}
+						});
+						
+						$('#issueNumberDirect').focus(function() {
+							$(this).select();
+							window.setTimeout(function() { $('#issueNumberDirect').select(); }, 100);
 						});
 					}
 				}
